@@ -52,6 +52,19 @@ jobs:
       with:
         go-version: '1.20'
 
+    - name: Set env
+      run: |
+          export appname=${{ github.event.inputs.APPNAME }}
+          export httpport=${{ github.event.inputs.HTTPPORT }}
+          export runmode=${{ github.event.inputs.RUNMODE }}
+          export SessionOn=${{ github.event.inputs.SessionOn }}
+          export copyrequestbody=${{ github.event.inputs.copyrequestbody }}
+          export driverName=${{ github.event.inputs.driverName }}
+          export dataSourceName=${{ github.event.inputs.dataSourceName }}
+          export dbName=${{ github.event.inputs.dbName }}
+          
+      
+
     - name: Build
       run: go build
 
