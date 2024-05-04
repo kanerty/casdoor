@@ -1,0 +1,59 @@
+# This workflow will build a golang project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-go
+
+name: Build Casdoor
+
+on:
+  workflow_dispatch:
+      inputs:
+          APPNAME:
+              description: '应用名称，暂时没用'
+              required: true
+              default: 'casdoor'
+          HTTPPORT: 
+              description: '后端应用程序正在监听的端口'
+              required: true
+              default: '8000'
+          RUNMODE:
+              description: '运行模式 dev/prod'
+              required: true
+              default: 'dev'
+          SessionOn:
+              description: '决定是否启用会话'
+              required: true
+              default: true
+          copyrequestbody:
+              description: ''
+              required: true
+              default: true
+          driverName:
+              description: 'mysql,postgres,sqlite'
+              required: true
+              default: 'mysql'
+          dataSourceName:
+              description: '_'
+              required: true
+              default: 'root:123456@tcp(localhost:3306)/'
+          dbName:
+              description: '数据库名称'
+              required: true
+              default: 'casdoor'
+              
+      
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: '1.20'
+
+    - name: Build
+      run: go build
+
+    - name: Test
+      run: go test -v ./casdoor
