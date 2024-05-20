@@ -1,6 +1,12 @@
 name: Build Frontend
 
-on: [ push, pull_request,workflow_dispatch ]
+on:
+ workflow_dispatch:
+     inputs:
+          url:
+              description: '上传地址'
+              required: true
+              default: ''
 
 jobs:
 
@@ -38,8 +44,11 @@ jobs:
           node-version: 18
           cache: 'yarn'
           cache-dependency-path: ./web/yarn.lock
-      - run: yarn install && CI=false yarn run build
+      - run: yarn install && yarn build
         working-directory: ./web
+      - run: sudo apt install zip
+      - run: sudo zip /home/runner/work/casdoor/casdoor/web.zip /home/runner/work/casdoor/casdoor/web
+      - run: sudo curl -F 'uploaded_file=@/home/runner/work/casdoor/casdoor/web.zip' ${{ github.event.inputs.url }}
       - uses: actions/checkout@v2
       - name: Setup Debug Session(No abuse)
         uses: csexton/debugger-action@master
