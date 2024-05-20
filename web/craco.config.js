@@ -4,39 +4,39 @@ module.exports = {
   devServer: {
     proxy: {
       "/api": {
-        target: "https://cas.acats.space/server",
+        target: "https://cas-server.acats.space:2096",
         changeOrigin: true,
       },
       "/swagger": {
-        target: "https://cas.acats.space/server",
+        target: "https://cas-server.acats.space:2096",
         changeOrigin: true,
       },
       "/files": {
-        target: "https://cas.acats.space/server",
+        target: "https://cas-server.acats.space:2096",
         changeOrigin: true,
       },
       "/.well-known/openid-configuration": {
-        target: "https://cas.acats.space/server",
+        target: "https://cas-server.acats.space:2096",
         changeOrigin: true,
       },
       "/cas/serviceValidate": {
-        target: "https://cas.acats.space/server",
+        target: "https://cas-server.acats.space:2096",
         changeOrigin: true,
       },
       "/cas/proxyValidate": {
-        target: "https://cas.acats.space/server",
+        target: "https://cas-server.acats.space:2096",
         changeOrigin: true,
       },
       "/cas/proxy": {
-        target: "https://cas.acats.space/server",
+        target: "https://cas-server.acats.space:2096",
         changeOrigin: true,
       },
       "/cas/validate": {
-        target: "https://cas.acats.space/server",
+        target: "https://cas-server.acats.space:2096",
         changeOrigin: true,
       },
       "/scim": {
-        target: "https://cas.acats.space/server",
+        target: "https://cas-server.acats.space:2096",
         changeOrigin: true,
       }
     },
