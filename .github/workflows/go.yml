@@ -31,9 +31,9 @@ on:
               required: true
               default: 'mysql'
           dataSourceName:
-              description: '数据库链接'
+              description: '数据库链接(括号要反斜杠)'
               required: true
-              default: 'root:123456@tcp(localhost:3306)/'
+              default: 'root:123456@tcp\(localhost:3306\)/'
           dbName:
               description: '数据库名称'
               required: true
